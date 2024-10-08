@@ -61,10 +61,10 @@ def upload_file():
     local_result = map_word_count(part1)
 
     # Envoyer la deuxième partie à Machine 2 et obtenir le résultat
-    remote_result1 = send_to_machine("http://192.168.1.33:5000/process_text", part2)
+    remote_result1 = send_to_machine("http://10.25.12.21:5000/process_text", part2)
 
     # Envoyer la troisième partie à Machine 3 et obtenir le résultat
-    remote_result2 = send_to_machine("http://192.168.1.35:5000/process_text", part3)
+    remote_result2 = send_to_machine("http://10.26.12.73:5000/process_text", part3)
 
     # Fusionner les résultats
     final_result = merge_results(local_result, remote_result1, remote_result2)
@@ -80,6 +80,8 @@ def upload_file():
 
     # Traiter le text localement (en une seule fois)
     solo_result = map_word_count(text)
+
+    time.sleep(1)
 
     # Stop timing for solo processing
     solo_execution_time = time.time() - start_time2
